@@ -13,8 +13,18 @@ namespace Invoices
     {
       List<object> products = new List<object>();
 
+      string query = @"
+SELECT 
+  p.IdProduct, 
+  p.Name, 
+  p.Description, 
+  pt.Name Type
+FROM Product p 
+LEFT JOIN ProductType pt ON p.IdProductType = pt.IdProductType
+";
+
       using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Steve\\documents\\visual studio 2015\\Projects\\Invoices\\Invoices\\Invoices.mdf\";Integrated Security=True"))
-      using (SqlCommand cmd = new SqlCommand("SELECT p.IdProduct, p.Name, p.Description, pt.Name Type  FROM Product p LEFT JOIN ProductType pt ON p.IdProductType = pt.IdProductType", connection))
+      using (SqlCommand cmd = new SqlCommand(query, connection))
       {
         connection.Open();
         using (SqlDataReader reader = cmd.ExecuteReader())
