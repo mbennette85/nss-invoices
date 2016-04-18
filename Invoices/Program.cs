@@ -25,7 +25,7 @@ namespace Invoices
             // Read advances to the next row.
             while (reader.Read())
             {
-              Console.WriteLine("Values:  {0}, {1}, {2}, {3}",
+              Console.WriteLine("{0}, {1}, {2}, {3}",
                   reader[0], reader[1], reader[2], reader[3]);
             }
 

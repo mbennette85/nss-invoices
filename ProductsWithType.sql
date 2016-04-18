@@ -1,0 +1,1 @@
+﻿SELECT p.IdProduct, p.Name, p.Description, pt.Name Type  FROM Product p LEFT JOIN ProductType pt ON p.IdProductType = pt.IdProductType
